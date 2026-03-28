@@ -1,1 +1,145 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-cream: #FDFCF8;
+  --color-cream-dark: #1C1917;
+  --color-card: #FFFFFF;
+  --color-card-dark: #292524;
+  --color-sage: #E8EFE8;
+  --color-sage-dark: #2D3B2D;
+  --color-lavender: #EFEDF4;
+  --color-lavender-dark: #2D2B3B;
+  --color-peach: #FFB7B2;
+  --color-peach-dark: #9B4D47;
+  --color-ink: #292524;
+  --color-ink-dark: #F5F5F4;
+  --color-muted: #78716C;
+  --color-muted-dark: #A8A29E;
+  --color-border: #E7E5E4;
+  --color-border-dark: #44403C;
+  --font-sans: 'Outfit', sans-serif;
+  --font-cursive: 'Reenie Beanie', cursive;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+}
+
+html.dark {
+  background-color: var(--color-cream-dark);
+  color: var(--color-ink-dark);
+}
+
+/* Grain overlay */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.03;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Reveal on scroll animation */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal {
+  animation: reveal 0.8s ease-out both;
+}
+
+.animate-reveal-delay-1 { animation-delay: 0.1s; }
+.animate-reveal-delay-2 { animation-delay: 0.2s; }
+.animate-reveal-delay-3 { animation-delay: 0.3s; }
+.animate-reveal-delay-4 { animation-delay: 0.4s; }
+
+/* Floating blob animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float 6s ease-in-out 3s infinite;
+}
+
+/* Soft card style */
+.card {
+  background: var(--color-card);
+  border-radius: 2rem;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.dark .card {
+  background: var(--color-card-dark);
+  border-color: var(--color-border-dark);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.2);
+}
+
+.card-sm {
+  background: var(--color-card);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.dark .card-sm {
+  background: var(--color-card-dark);
+  border-color: var(--color-border-dark);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Input styling */
+.input {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  background: var(--color-card);
+  color: var(--color-ink);
+  transition: all 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-peach);
+  box-shadow: 0 0 0 3px rgba(255, 183, 178, 0.2);
+}
+
+.dark .input {
+  background: #1C1917;
+  border-color: var(--color-border-dark);
+  color: var(--color-ink-dark);
+}
+
+.dark .input:focus {
+  border-color: var(--color-peach-dark);
+  box-shadow: 0 0 0 3px rgba(155, 77, 71, 0.3);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+.dark ::-webkit-scrollbar-thumb { background: var(--color-border-dark); }

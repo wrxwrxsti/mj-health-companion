@@ -62,4 +62,8 @@ export const demoLabResults = [
 
 export const demoAppointments = []
 
-export const demoDocuments = []
+export const demoDocuments = [
+  { id: 'd1', title: 'Case Summary', doc_type: 'discharge_summary', doc_date: '2025-06-08', hospital: 'SGPGI Lucknow', department: 'immunology', doctor_name: null, notes: 'Complete case summary of vasculitis diagnosis and treatment', file_url: '/documents/case-summary.pdf', file_type: 'application/pdf', tags: null, created_at: '2025-06-08T00:00:00Z' },
+  { id: 'd2', title: 'Discharge Summary', doc_type: 'discharge_summary', doc_date: '2025-06-08', hospital: 'SGPGI Lucknow', department: 'immunology', doctor_name: null, notes: 'Discharge summary from SGPGI Immunology admission', file_url: '/documents/discharge-summary.pdf', file_type: 'application/pdf', tags: null, created_at: '2025-06-08T00:00:00Z' },
+  { id: 'd3', title: 'Blood Test Report - March 2026', doc_type: 'blood_test', doc_date: '2026-03-12', hospital: 'Tata 1mg Labs', department: 'pathology', doctor_name: null, notes: 'CBC, ESR, and other blood parameters', file_url: '/documents/blood-test-march-2026.pdf', file_type: 'application/pdf', tags: null, created_at: '2026-03-12T00:00:00Z' },
+]
