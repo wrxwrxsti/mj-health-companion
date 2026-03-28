@@ -100,30 +100,20 @@ export default function Dashboard() {
             <Heart size={20} className="text-peach dark:text-peach-dark" />
             <h2 className="text-lg font-bold text-ink dark:text-ink-dark">Health Brief</h2>
           </div>
-          {/* Simple / Doctor Tabs */}
-          <div className="flex bg-sage/40 dark:bg-sage-dark/40 rounded-2xl p-1">
+          {/* Simple / Doctor Toggle */}
+          <div className="flex items-center gap-2 text-sm">
+            <span className={`flex items-center gap-1 ${!doctorView ? 'text-peach dark:text-peach-dark font-medium' : 'text-muted dark:text-muted-dark'}`}>
+              <User size={14} /> Simple
+            </span>
             <button
-              onClick={() => setDoctorView(false)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium transition-all ${
-                !doctorView
-                  ? 'bg-card dark:bg-card-dark text-ink dark:text-ink-dark shadow-sm'
-                  : 'text-muted dark:text-muted-dark hover:text-ink dark:hover:text-ink-dark'
-              }`}
+              onClick={() => setDoctorView(!doctorView)}
+              className={`relative w-11 h-6 rounded-full transition-colors ${doctorView ? 'bg-peach dark:bg-peach-dark' : 'bg-border dark:bg-border-dark'}`}
             >
-              <User size={14} />
-              Simple
+              <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white dark:bg-cream-dark rounded-full transition-transform shadow ${doctorView ? 'translate-x-5' : ''}`} />
             </button>
-            <button
-              onClick={() => setDoctorView(true)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium transition-all ${
-                doctorView
-                  ? 'bg-card dark:bg-card-dark text-ink dark:text-ink-dark shadow-sm'
-                  : 'text-muted dark:text-muted-dark hover:text-ink dark:hover:text-ink-dark'
-              }`}
-            >
-              <Stethoscope size={14} />
-              Doctor
-            </button>
+            <span className={`flex items-center gap-1 ${doctorView ? 'text-peach dark:text-peach-dark font-medium' : 'text-muted dark:text-muted-dark'}`}>
+              <Stethoscope size={14} /> Doctor
+            </span>
           </div>
         </div>
         <div className="text-sm text-muted dark:text-muted-dark leading-relaxed whitespace-pre-line">

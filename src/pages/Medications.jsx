@@ -151,7 +151,8 @@ export default function Medications() {
               {filtered
                 .filter(m => view === 'active' ? true : (!m.name.includes('CYC') || view === 'all'))
                 .map((med, i) => (
-                <div key={med.id} className="card p-4 animate-reveal" style={{ animationDelay: `${i * 0.05}s` }}>
+                <div key={med.id} className="card p-4 animate-reveal cursor-pointer" style={{ animationDelay: `${i * 0.05}s` }}
+                  onClick={() => setExpandedId(expandedId === med.id ? null : med.id)}>
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 flex-wrap">
@@ -171,12 +172,9 @@ export default function Medications() {
                       </div>
                       {med.timing && <div className="text-xs text-muted/70 dark:text-muted-dark/70 mt-1">{med.timing}</div>}
                     </div>
-                    <button
-                      onClick={() => setExpandedId(expandedId === med.id ? null : med.id)}
-                      className="text-muted dark:text-muted-dark hover:text-ink dark:hover:text-ink-dark p-1"
-                    >
+                    <div className="text-muted dark:text-muted-dark p-1">
                       {expandedId === med.id ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                    </button>
+                    </div>
                   </div>
 
                   {expandedId === med.id && (

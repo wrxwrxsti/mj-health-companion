@@ -135,7 +135,7 @@ export default function Timeline() {
             {filtered.map((event, i) => (
               <div key={event.id} className="relative pl-12 animate-reveal" style={{ animationDelay: `${i * 0.05}s` }}>
                 <div className={`absolute left-[12px] top-5 w-4 h-4 rounded-full border-2 border-card dark:border-card-dark shadow-sm ${SEVERITY_DOT_COLORS[event.severity] || 'bg-gray-400'}`} />
-                <div className="card p-4">
+                <div className="card p-4 cursor-pointer" onClick={() => setExpandedId(expandedId === event.id ? null : event.id)}>
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="text-xs text-muted dark:text-muted-dark mb-1">
@@ -155,12 +155,9 @@ export default function Timeline() {
                         )}
                       </div>
                     </div>
-                    <button
-                      onClick={() => setExpandedId(expandedId === event.id ? null : event.id)}
-                      className="text-muted dark:text-muted-dark hover:text-ink dark:hover:text-ink-dark p-1"
-                    >
+                    <div className="text-muted dark:text-muted-dark p-1">
                       {expandedId === event.id ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                    </button>
+                    </div>
                   </div>
                   {expandedId === event.id && (
                     <div className="mt-3 pt-3 border-t border-border/50 dark:border-border-dark/50 text-sm">
